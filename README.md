@@ -1,7 +1,7 @@
 # Smart-Irrigation-Scheduler
 ## Overview
 
-Smart-Irrigation-Scheduler is a project designed to optimize water usage for irrigation systems by leveraging smart scheduling algorithms and environmental data. The goal is to provide an efficient and sustainable solution for managing water resources in agricultural and landscaping applications.
+Smart-Irrigation-Scheduler is a project designed to optimize water usage for irrigation systems by leveraging environmental data. The goal is to provide an efficient and sustainable solution for managing water resources in agricultural and landscaping applications.
 
 ## Features
 
