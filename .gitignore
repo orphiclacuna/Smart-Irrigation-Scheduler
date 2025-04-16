@@ -1,0 +1,12 @@
+# Python-related
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Streamlit-related
+.streamlit/
+
+# OS-specific
+.DS_Store
+Thumbs.db
