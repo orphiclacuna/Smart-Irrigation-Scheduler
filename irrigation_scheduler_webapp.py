@@ -4,6 +4,7 @@ from geopy.geocoders import Nominatim
 from datetime import datetime, timedelta
 from streamlit_folium import st_folium
 import folium
+import plotly.express as px
 
 # --- Page Config ---
 st.set_page_config(page_title="Irrigation Scheduler", layout="centered")
@@ -12,6 +13,7 @@ st.title("Smart Irrigation Scheduler 💧")
 # --- Custom Styling ---
 st.markdown("""
     <style>
+    /* Custom button styles */
     .stButton > button {
         background-color: #0099ff;
         color: white;
@@ -21,6 +23,24 @@ st.markdown("""
         background-color: #00cc66;
         color: white;
         font-weight: bold;
+    }
+
+    /* Custom map container styling */
+    .streamlit-folium {
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 10px;  /* Adjust space below the map */
+    }
+
+    /* Remove excess padding and margin for the entire page */
+    .main .block-container {
+        padding-top: 0rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Adjust margin below title */
+    .css-1v3fvcr {
+        margin-bottom: 0rem;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -87,12 +107,29 @@ def generate_irrigation_schedule(weather_df):
     return pd.DataFrame(results)
 
 # --- Generate and Display Schedule ---
-if st.button("Generate Irrigation Schedule") and lat and lon:
+if st.button("Generate Irrigation Schedule", key="generate_schedule_button_1") and lat and lon:
     weather = fetch_dummy_weather(start_date, end_date, crop)
     with st.spinner("Generating schedule..."):
         schedule = generate_irrigation_schedule(weather)
 
     st.subheader("✅ Irrigation Schedule")
     st.data_editor(schedule, use_container_width=True, num_rows="dynamic", disabled=True)
+
+    # Create line chart of ET0, Rain, and Irrigation
+    chart_data = schedule.set_index("date")
+    
+    # Plot ET0, Rain, and Irrigation as Line Chart
+    st.subheader("📊 Irrigation and Weather Trends")
+    st.line_chart(chart_data[["et0", "rain", "irrigation"]])
+    
+    # Add download button for CSV with a unique key
+    csv = schedule.to_csv(index=False)
+    st.download_button(
+        label="Download Schedule as CSV",
+        data=csv,
+        file_name="irrigation_schedule.csv",
+        mime="text/csv",
+        key="download_csv_button_1"  # Add a unique key for the download button
+    )
 elif not lat or not lon:
     st.info("🗺️ Click a location on the map to continue.")
