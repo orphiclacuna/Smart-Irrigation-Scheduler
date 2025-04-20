@@ -4,14 +4,12 @@ from geopy.geocoders import Nominatim
 from datetime import datetime, timedelta
 from streamlit_folium import st_folium
 import folium
-import plotly.express as px
 
 st.set_page_config(page_title="Irrigation Scheduler", layout="centered")
 st.title("Smart Irrigation Scheduler 💧")
 
 st.markdown("""
     <style>
-    /* Custom button styles */
     .stButton > button, .stDownloadButton > button {
         background-color: #203069 !important;
         color: white !important;
@@ -28,7 +26,6 @@ st.markdown("""
         color: white !important;
     }
 
-    /* Map and layout tweaks */
     .streamlit-folium {
         padding: 0;
         margin-top: 0;
@@ -79,7 +76,6 @@ def fetch_dummy_weather(start_date, end_date, crop_type):
         "Wheat": 3.5,
         "Rice": 4.0,
         "Corn": 4.5,
-        "Custom": 3.0
     }.get(crop_type, 3.0)
     return pd.DataFrame({
         "date": dates,
