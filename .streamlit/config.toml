@@ -1,0 +1,11 @@
+[theme]
+primaryColor = "#1E90FF"  # Light Blue for the main highlights
+backgroundColor = "#f0f2f6"  # Light background color
+secondaryBackgroundColor = "#ffffff"  # White for sidebar and widgets
+textColor = "#333333"  # Dark text for contrast
+font = "sans serif"  # Clean and modern font
+
+[server]
+headless = true  # Ensures app runs without a UI for local server
+enableCORS = false  # Disable Cross-Origin Resource Sharing
+port = 8501  # Default port for Streamlit apps

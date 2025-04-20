@@ -4,9 +4,6 @@ __pycache__/
 *.pyo
 .env
 
-# Streamlit-related
-.streamlit/
-
 # OS-specific
 .DS_Store
 Thumbs.db
