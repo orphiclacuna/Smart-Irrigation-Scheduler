@@ -44,6 +44,10 @@ Smart-Irrigation-Scheduler is a project designed to optimize water usage for irr
 2. Monitor real-time data and adjust schedules as needed.
 3. View analytics to track water usage and optimize performance.
 
+## Web Application
+
+Access the web application here: [Smart Irrigation Scheduler WebApp](https://smart-irrigation-scheduler.streamlit.app)
+
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
