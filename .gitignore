@@ -9,4 +9,4 @@ __pycache__/
 Thumbs.db
 
 # toml
-streamlit/secrets.toml
+.streamlit/secrets.toml
