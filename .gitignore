@@ -7,3 +7,6 @@ __pycache__/
 # OS-specific
 .DS_Store
 Thumbs.db
+
+# toml
+.toml
